@@ -1,0 +1,28 @@
+---
+title: "STAT184 Final Project Jake-Part"
+author: "Jake Silva"
+date: "2024-04-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background on the Dataset
+
+The data set we decided to use for this analysis is called FIFA 24 Player Stats Data set. We found this set through Kaggle.com. This entire data set had a total of 6 CSVs including Male Coaches, Male Teams, Male Players, Female Coaches, Female Teams, Female Players. All our data in this report comes from the Male Players CSV and selected all the data for the year 2024. Inside this set, there was a 109 attributes ranging from the players date of birth, nationality, position, ranking statistics, and more. As goalkeepers in-game statistics are weighted differently, the scope of this report is just field players. In FIFA, the game displays players using 6 main statistics which include a players rating for Pace, Shooting, Passing, Dribbling, Defense, and Physicality. In this project, the main attributes we focused on where Player Name, Market Value, Overall Rating, Position, and the 6 main statistics mentioned above. Moreover, a player defines a case through this analysis.
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
