@@ -13,3 +13,30 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The topic we chose is exploring statistics in EA Sports FC 24 to answer research questions of interest. EA Sports FC 24 is a soccer video game developed by Electronic Arts (EA) based on real-world data. We chose this topic because we both grew up playing FIFA, and we wanted to explore the statistical side of the video game we love. We focused on three main research questions throughout this project: "How does rating compare to market value in the game?", "Who is better between Messi and Ronaldo in the game?", and "Who are the best overall rated players in the game?." We chose these research questions because we were interested in analyzing our theory that higher rated players have higher market values, answering the greatest of all time debate between Messi and Ronaldo, and seeing who the best players in the game are.
 
+## Combined Statistics to find the Best Overall Rated Players in the Game
+
+The third research question we will be exploring is "Who are the best overall rated players in the game?." To explore this research question, we will be making and analyzing a summary table of the top ten players in the game. The summary table will consist of 8 attributes: Name, Rating, Pace, Shooting, Passing, Dribbling, Defending, and Physical. Each case will be an individual player with their name and overall rating based on the 6 different metrics mentioned previously. One important note is that while the original top ten included goalkeepers, we decided to omit goalkeepers for the sake of simplicity and only explore field players. As we can see from the summary table, Mbappé, Haaland, and De Bruyne lead the rankings each with an overall rating of 91, Messi, Benzema, Lewandowski, and Kane are next with an overall rating of 90, and Vinícius, Rodrigo, and Rúben Dias follow them with an overall rating of 89.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+fifa_stats <- read_csv("C:/Users/Yunus/Downloads/male_players.csv")
+fifa_24_stats <- fifa_stats %>%
+  filter(fifa_version == 24.0)
+fifa_24_stats <- subset(fifa_24_stats, player_positions != "GK")
+stats_table <- fifa_24_stats %>%
+  select(long_name, overall, pace, shooting, passing, dribbling, defending, physic)
+top_ten = head(stats_table, 10)
+top_ten %>%
+  kable(caption = "EA Sports FC 24 Top Ten Players", 
+        col.names = c("Name", "Rating", "Pace", "Shooting", "Passing", "Dribbling", "Defending", "Physical"),
+        booktabs = TRUE, 
+        align = c("l", rep("c", 7))) %>%
+  kable_styling(bootstrap_options = c("striped"), font_size = 16)
+```
+
+## Conclusions
+
+In conclusion, we explored statistics in EA Sports FC 24 by answering three main research questions: "How does rating compare to market value in the game?," "Who is better between Messi and Ronaldo in the game?," "Who are the best overall rated players in the game?." We saw that there is a direct positive correlation between rating and market value, so we proved our theory that the higher the rating of a player, the higher their market value. Between Messi and Ronaldo, we saw that Messi has slightly better overall stats than Ronaldo. For who are the highest rated players in the game, we saw that Mbappé, Haaland, and De Bruyne lead the rankings with the highest overall ratings and individual attributes. 
