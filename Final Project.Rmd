@@ -1,0 +1,15 @@
+---
+title: "STAT184 Final Project"
+author: "Yunus Alptekinoglu"
+date: "2024-04-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Topic & Research Questions
+
+The topic we chose is exploring statistics in EA Sports FC 24 to answer research questions of interest. EA Sports FC 24 is a soccer video game developed by Electronic Arts (EA) based on real-world data. We chose this topic because we both grew up playing FIFA, and we wanted to explore the statistical side of the video game we love. We focused on three main research questions throughout this project: "How does rating compare to market value in the game?", "Who is better between Messi and Ronaldo in the game?", and "Who are the best overall rated players in the game?." We chose these research questions because we were interested in analyzing our theory that higher rated players have higher market values, answering the greatest of all time debate between Messi and Ronaldo, and seeing who the best players in the game are.
+
