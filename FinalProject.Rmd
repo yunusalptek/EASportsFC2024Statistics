@@ -1,5 +1,5 @@
 ---
-title: "STAT184 Final Project"
+title: "EA Sports FC 24 Statistics"
 author: "Yunus Alptekinoglu & Jake Silva"
 date: "2024-04-29"
 output: html_document
@@ -12,7 +12,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Topic & Research Questions
 
-The topic we chose is exploring statistics in EA Sports FC 24 to answer research questions of interest. EA Sports FC 24 is a soccer video game developed by Electronic Arts (EA) based on real-world data. We chose this topic because we both grew up playing FIFA, and we wanted to explore the statistical side of the video game we love. We focused on three main research questions throughout this project: "How does rating compare to market value in the game?", "Who is better between Messi and Ronaldo in the game?", and "Who are the best overall rated players in the game?." We chose these research questions because we were interested in analyzing our theory that higher rated players have higher market values, answering the greatest of all time debate between Messi and Ronaldo, and seeing who the best players in the game are.
+The topic we chose is exploring statistics in EA Sports FC 24 to answer research questions of interest. EA Sports FC 24 is a soccer video game developed by Electronic Arts (EA) based on real-world data. We chose this topic because we both grew up playing FIFA, and we wanted to explore the statistical side of the video game we love. We focused on three main research questions throughout this project: 
+
+* How does rating compare to market value?
+* Who is better between Messi and Ronaldo?
+* Who are the best overall rated players?
+
+We chose these research questions because we were interested in analyzing our theory that higher rated players have higher market values, answering the greatest of all time debate between Messi and Ronaldo, and seeing who the best players in the game are.
 
 ## Background on the Dataset
 
@@ -20,7 +26,7 @@ The data set we decided to use for this analysis is called FIFA 24 Player Stats 
 
 ## Player Rating Versus Market Value
 
-We want to answer the question of how does a players overall rating compare to their market value. Intuitively, we suspect a positive correlation between these variables; however, we want to see just how strong that correlation might be. Additionally, what rating to the price of the players start to vary. A scatterplot is the best option to answer all of these questions.
+We want to answer the question of how does a players overall rating compare to their market value. Intuitively, we suspect a positive correlation between these variables; however, we want to see just how strong that correlation might be. Additionally, at what rating does the price of the players start to vary. A scatterplot is the best option to answer all of these questions.
 
 ```{r Data Visualization 1, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -62,7 +68,7 @@ ggplot(player_stats, aes(x = overall, y = value_eur)) +
 
 ```
 
-As we can see, there is a strong positive correlation between a player's overall rating and their market value. This is demonstrated by the red regression line with a positive constant slope. The areas of darker blue have more players in that area, and the lighter the blue dot the less players. Additionally, the players with lower overall rating (50-65) tend to vary more in price than the higher overall ratings(80-90).
+As we can see, there is a strong positive correlation between a player's overall rating and their market value. This is demonstrated by the red regression line with a positive constant slope. The areas of darker blue have more players in that area, and the lighter the blue dots the less players. Additionally, the players with lower overall rating (50-65) tend to vary more in price than the higher overall ratings (80-90).
 
 ## Messi Versus Ronaldo
 
@@ -122,11 +128,11 @@ ggplot(comparison_data_long, aes(x = attribute, y = rating, fill = long_name)) +
 
 ```
 
-This histogram allows to easily visualize how Messi and Ronaldo compare side-by-side. Messi takes the edge on Ronaldo in Dribbling, Pace, and Passing. While Ronaldo is statistically better at Defending, Shooting, and Physicality. As for the overall answer we are looking for... Messi is a higher overall rated player in FIFA.
+This histogram allows us to easily visualize how Messi and Ronaldo compare side-by-side. Messi takes the edge on Ronaldo in Dribbling, Pace, and Passing. While Ronaldo is statistically better at Defending, Shooting, and Physicality. As for the overall answer we are looking for... Messi is a higher overall rated player in FIFA.
 
 ## Top Ten Highest Rated Players
 
-The third research question we will be exploring is "Who are the best overall rated players in the game?." To explore this research question, we will be making and analyzing a summary table of the top ten players in the game. The summary table will consist of 8 attributes: Name, Rating, Pace, Shooting, Passing, Dribbling, Defending, and Physical. Each case will be an individual player with their name and overall rating based on the 6 different metrics mentioned previously. One important note is that while the original top ten included goalkeepers, we decided to omit goalkeepers for the sake of simplicity and only explore field players. As we can see from the summary table, Mbappé, Haaland, and De Bruyne lead the rankings each with an overall rating of 91, Messi, Benzema, Lewandowski, and Kane are next with an overall rating of 90, and Vinícius, Rodrigo, and Rúben Dias follow them with an overall rating of 89.
+The third research question we will be exploring is "Who are the best overall rated players in the game?" To explore this research question, we will be making and analyzing a summary table of the top ten players in the game. The summary table will consist of 8 attributes: Name, Rating, Pace, Shooting, Passing, Dribbling, Defending, and Physical. Each case will be an individual player with their name and overall rating based on the 6 different metrics mentioned previously. One important note is that while the original top ten included goalkeepers, we decided to omit goalkeepers for the sake of simplicity and only explore field players.
 
 ```{r, Data Visualization 3, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -165,6 +171,14 @@ top_ten %>%
 
 ```
 
+As we can see from the summary table, Mbappé, Haaland, and De Bruyne lead the rankings each with an overall rating of 91, Messi, Benzema, Lewandowski, and Kane are next with an overall rating of 90, and Vinícius, Rodrigo, and Rúben Dias follow them with an overall rating of 89.
+
 ## Conclusions
 
-In conclusion, we explored statistics in EA Sports FC 24 by answering three main research questions: "How does rating compare to market value in the game?," "Who is better between Messi and Ronaldo in the game?," "Who are the best overall rated players in the game?." We saw that there is a direct positive correlation between rating and market value, so we proved our theory that the higher the rating of a player, the higher their market value. Between Messi and Ronaldo, we saw that Messi has slightly better overall stats than Ronaldo. For who are the highest rated players in the game, we saw that Mbappé, Haaland, and De Bruyne lead the rankings with the highest overall ratings and individual attributes. 
+In conclusion, we explored statistics in EA Sports FC 24 by answering three main research questions:
+
+* How does rating compare to market value?
+* Who is better between Messi and Ronaldo?
+* Who are the best overall rated players?
+
+We saw that there is a direct positive correlation between rating and market value, so we proved our theory that the higher the rating of a player, the higher their market value. Between Messi and Ronaldo, we saw that Messi has slightly better overall stats than Ronaldo. For who are the highest rated players in the game, we saw that Mbappé, Haaland, and De Bruyne lead the rankings with the highest overall ratings and individual attributes. 
