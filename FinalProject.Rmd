@@ -22,11 +22,19 @@ We chose these research questions because we were interested in analyzing our th
 
 ## Background on the Dataset
 
-The data set we decided to use for this analysis is called FIFA 24 Player Stats Data set. We found this set through Kaggle.com. This entire data set had a total of 6 CSVs including Male Coaches, Male Teams, Male Players, Female Coaches, Female Teams, Female Players. All our data in this report comes from the Male Players CSV and selected all the data for the year 2024. Inside this set, there was a 109 attributes ranging from the players date of birth, nationality, position, ranking statistics, and more. As goalkeepers in-game statistics are weighted differently, the scope of this report is just field players. In FIFA, the game displays players using 6 main statistics which include a players rating for Pace, Shooting, Passing, Dribbling, Defense, and Physicality. In this project, the main attributes we focused on where Player Name, Market Value, Overall Rating, Position, and the 6 main statistics mentioned above. Moreover, a player defines a case through this analysis.
+The data set we decided to use for this analysis is called FIFA 24 Player Stats Data set and can be found in our GitHub repository. We found this set through Kaggle.com. This entire data set had a total of 6 CSVs including Male Coaches, Male Teams, Male Players, Female Coaches, Female Teams, Female Players. All our data in this report comes from the Male Players CSV and selected all the data for the year 2024. A glimpse of our data set can be seen below:
+
+```{r, Dataset Inspection, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+player_stats <- read_csv("male_players.csv") # Read csv
+str(player_stats[c(1:10)])
+```
+
+Inside this set, there was 109 attributes ranging from the players date of birth, nationality, position, ranking statistics, and more. For the sake of simplicity, we have displayed only the first 10 attributes above. As goalkeepers in-game statistics are weighted differently, the scope of this report is just field players. In FIFA, the game displays players using 6 main statistics which include a players rating for Pace, Shooting, Passing, Dribbling, Defense, and Physicality. In this project, the main attributes we focused on were Player Name, Market Value, Overall Rating, Position, and the 6 main statistics mentioned above. Moreover, a player defines a case through this analysis.
 
 ## Player Rating Versus Market Value
 
-We want to answer the question of how does a players overall rating compare to their market value. Intuitively, we suspect a positive correlation between these variables; however, we want to see just how strong that correlation might be. Additionally, at what rating does the price of the players start to vary. A scatterplot is the best option to answer all of these questions.
+We want to answer the question of how does a players overall rating compare to their market value. Intuitively, we suspect a positive correlation between these variables; however, we want to see just how strong that correlation might be. Additionally, at what rating does the price of the players start to vary. A scatter plot is the best option to answer all of these questions.
 
 ```{r Data Visualization 1, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -38,7 +46,7 @@ library(ggplot2)
 library(janitor)
 library(tidyr)
 
-player_stats <- read_csv("C:/Users/Yunus/Downloads/male_players.csv") # Read csv
+player_stats <- read_csv("male_players.csv") # Read csv
 
 # Clean the data of Null Values
 
@@ -72,7 +80,7 @@ As we can see, there is a strong positive correlation between a player's overall
 
 ## Messi Versus Ronaldo
 
-To answer our second research question we want to perform a statistical analysis on Messi vs Ronaldo. If you've heard of the sport of soccer, chances are you've heard these two names as well. The media portrays Messi and Ronaldo as the best players of all time. This creates division among the soccer community as there is a common debate of who is actually better than the other. For the scope of this project, we want to observe who is the better player in game. Through a side-by-side histogram, we will analyze their 6 main statistics, as well as their overall ranking.
+To answer our second research question we want to perform a statistical analysis on Messi versus Ronaldo. If you've heard of the sport of soccer, chances are you've heard these two names as well. The media portrays Messi and Ronaldo as the best players of all time. This creates division among the soccer community as there is a common debate of who is actually better than the other. For the scope of this project, we want to observe who is the better player in game. Through a side-by-side histogram, we will analyze their 6 main statistics, as well as their overall ranking.
 
 ```{r Data Visualization 2, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -83,7 +91,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 
-player_stats <- read_csv("C:/Users/Yunus/Downloads/male_players.csv") # Read csv
+player_stats <- read_csv("male_players.csv") # Read csv
 
 #Clean the data of Null Values
 
@@ -144,7 +152,7 @@ library(knitr)
 library(kableExtra)
 
 
-fifa_stats <- read_csv("C:/Users/Yunus/Downloads/male_players.csv") # Read csv file
+fifa_stats <- read_csv("male_players.csv") # Read csv file
 
 # Filter to 2024
 
@@ -162,12 +170,16 @@ top_ten = head(stats_table, 10) # Take top 10
 
 # Polish styling
 
-top_ten %>%
+polish <- function(table) {
+  table %>%
   kable(caption = "EA Sports FC 24 Top Ten Players", 
         col.names = c("Name", "Rating", "Pace", "Shooting", "Passing", "Dribbling", "Defending", "Physical"),
         booktabs = TRUE, 
         align = c("l", rep("c", 7))) %>%
   kable_styling(bootstrap_options = c("striped"), font_size = 16)
+}
+
+polish(top_ten)
 
 ```
 
