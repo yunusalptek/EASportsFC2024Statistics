@@ -2,11 +2,12 @@
 title: "STAT184 Final Project"
 author: "Yunus Alptekinoglu & Jake Silva"
 date: "2024-04-29"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+# Coding Style: tidyverse
 ```
 
 ## Topic & Research Questions
